@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redmine Injector</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 0;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #333;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .status {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .status-count {
+      font-size: 32px;
+      font-weight: bold;
+      color: #667eea;
+      margin-bottom: 5px;
+    }
+
+    .status-label {
+      font-size: 14px;
+      color: #6c757d;
+    }
+
+    .status-active {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .status-active-item {
+      text-align: center;
+    }
+
+    .status-active-count {
+      font-size: 20px;
+      font-weight: 600;
+      color: #27ae60;
+    }
+
+    .status-active-label {
+      font-size: 11px;
+      color: #6c757d;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #667eea;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #5568d3;
+    }
+
+    .btn-secondary {
+      background-color: #95a5a6;
+    }
+
+    .btn-secondary:hover {
+      background-color: #7f8c8d;
+    }
+
+    .current-page {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #fff3cd;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .current-page-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #856404;
+    }
+
+    .current-page-url {
+      color: #856404;
+      word-break: break-all;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+    }
+
+    .matching-count {
+      margin-top: 5px;
+      font-weight: 600;
+      color: #27ae60;
+    }
+
+    .footer {
+      padding: 15px 20px;
+      background-color: #f8f9fa;
+      text-align: center;
+      font-size: 11px;
+      color: #6c757d;
+      border-top: 1px solid #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Redmine Injector</h1>
+  </div>
+
+  <div class="content">
+    <div class="status">
+      <div class="status-count" id="totalCount">0</div>
+      <div class="status-label">登録済みカスタマイズ</div>
+      <div class="status-active">
+        <div class="status-active-item">
+          <div class="status-active-count" id="enabledCount">0</div>
+          <div class="status-active-label">有効</div>
+        </div>
+        <div class="status-active-item">
+          <div class="status-active-count" id="disabledCount" style="color: #e74c3c;">0</div>
+          <div class="status-active-label">無効</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="currentPageInfo" class="current-page" style="display: none;">
+      <div class="current-page-title">現在のページ</div>
+      <div class="current-page-url" id="currentUrl"></div>
+      <div class="matching-count" id="matchingCount"></div>
+    </div>
+
+    <button class="btn" id="openOptions">設定を開く</button>
+    <a href="https://github.com/onozaty/redmine-view-customize" target="_blank" class="btn btn-secondary">
+      元のプラグインを見る
+    </a>
+  </div>
+
+  <div class="footer">
+    Version 1.0.0
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+[
+  {
+    "css": ".subject .js-codecopy-ok:after {\n  content : '[OK]';\n}\n",
+    "domain": "",
+    "enabled": true,
+    "id": "custom_1759320017781_i097qwq0w",
+    "javascript": "// 件名とをコピーする\n// パブリックな関数名などにsupportをつけることとする。\n\n\nfunction prepared_subject_support() {\n\t$('.details .subject:eq(0)').prepend('<a class=\"js-codecopy\" href=\"javascript: void 0;\" onclick=\"copy_subject_support(this);\">件名をコピー</a>');\n\tvar issue_id_obj = document.querySelector('#content h2');\n\tvar subject = document.querySelector('#content .subject h3');\n\tvar issue_id = get_issue_id_support(issue_id_obj);\n\tsubject.textContent = issue_id + subject.textContent;\n}\n\nfunction get_issue_id_support(issue_id_obj) {\n\tif (!issue_id_obj) {\n\t\treturn '';\n\t}\n\t\n\tvar match = issue_id_obj.textContent.match(/#[0-9]+/);\n\n\tif (!match) {\n\t\treturn '';\n\t}\n\t\n\treturn match[0] + ' ';\n}\n\n$(function() {\n\tprepared_subject_support();\n});\n\nvar copy_timeout_support = 0;\nfunction copy_subject_support(obj) {\n\tif (!document.querySelector) {\n\t\talert(\"コピーできませんでした。\\nブラウザが対応していない可能性があります。\");\n\t\treturn;\n\t}\n\n\tvar subject = $(obj).parents('.subject');\n\tvar isSuccess = false;\n\n\tif (!subject[0]) {\n\t\talert('コピーに失敗しました。');\n\t\treturn;\n\t}\n\n\t$(obj).removeClass('js-codecopy-ok');\n\n\tif (copy_timeout_support) {\n\t\tclearTimeout(copy_timeout_support);\n\t}\n\n\ttry {\n\t\tvar subject = document.querySelector('#content .subject h3');\n\t\tvar backupText = subject.textContent;\n\t\tsubject.textContent = subject.textContent;\n\t\t\n\t\tvar range = document.createRange();\n\t\trange.selectNode(subject);\n\t\twindow.getSelection().removeAllRanges();\n\t\twindow.getSelection().addRange(range);\n\t\tisSuccess = document.execCommand('copy');\n\t\t\n\t\tsubject.textContent = backupText;\n\n\t\tif (true !== isSuccess) {\n\t\t\talert('コピーできませんでした。\\nブラウザが対応していない可能性があります。');\n\t\t}\n\n\t\twindow.getSelection().removeAllRanges();\n\t} catch(e) {\n\t\twindow.getSelection().removeAllRanges();\n\t\talert('コピーできませんでした。\\nブラウザが対応していない可能性があります。');\n\t}\n\t\n\tif (isSuccess) {\n\t\t$(obj).addClass('js-codecopy-ok');\n\t\tconsole.log(obj);\n\t\tcopy_timeout_support = setTimeout(function() {$(obj).removeClass('js-codecopy-ok');}, 3000);\n\t}\n}\n",
+    "name": "チケットタイトルにIDを付けてクリップボードコピー機能を付ける",
+    "pathPattern": "/issues/[0-9]+"
+  }
+]

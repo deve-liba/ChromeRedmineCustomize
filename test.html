@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redmine Injector - Test Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    h2 {
+      color: #3498db;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    .success {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    .info {
+      background: #e3f2fd;
+      padding: 15px;
+      border-left: 4px solid #2196f3;
+      margin: 10px 0;
+    }
+    #test-result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Redmine Injector - テストページ</h1>
+  
+  <div class="test-section">
+    <h2>拡張機能テスト</h2>
+    <p>このページは Chrome 拡張機能 "Redmine Injector" のテストに使用します。</p>
+    
+    <div class="info">
+      <strong>テスト手順:</strong>
+      <ol>
+        <li>拡張機能の設定画面を開く</li>
+        <li>新規カスタマイズを追加:
+          <ul>
+            <li><strong>名前:</strong> テスト用JavaScript</li>
+            <li><strong>対象ドメイン:</strong> localhost (または 127.0.0.1)</li>
+            <li><strong>JavaScript:</strong> 下記のコードをコピー</li>
+          </ul>
+        </li>
+        <li>このページをリロード (F5)</li>
+        <li>緑色の成功メッセージが表示されることを確認</li>
+        <li>ブラウザのコンソール (F12) でCSPエラーがないことを確認</li>
+      </ol>
+    </div>
+
+    <h3>テスト用 JavaScript コード:</h3>
+    <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+document.addEventListener('DOMContentLoaded', function() {
+  var testResult = document.getElementById('test-result');
+  if (testResult) {
+    testResult.style.background = '#d4edda';
+    testResult.style.border = '2px solid #27ae60';
+    testResult.style.color = '#155724';
+    testResult.innerHTML = '<strong>✓ 成功!</strong> カスタムJavaScriptが正常に実行されました。<br>' +
+                          '現在時刻: ' + new Date().toLocaleString('ja-JP');
+    console.log('[Redmine Customize Test] JavaScript injection successful!');
+  }
+});</pre>
+
+    <h3>テスト用 CSS コード (オプション):</h3>
+    <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+body {
+  border-top: 5px solid #3498db !important;
+}
+
+h1 {
+  color: #e74c3c !important;
+}</pre>
+
+    <div id="test-result" style="background: #fff3cd; border: 2px solid #ffc107; color: #856404;">
+      <strong>⏳ 待機中...</strong> カスタマイズが適用されるとこのメッセージが変わります。
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>期待される結果</h2>
+    <ul>
+      <li class="success">✓ 上記の「待機中...」メッセージが緑色の「成功!」メッセージに変わる</li>
+      <li class="success">✓ ブラウザコンソールにエラーがない (特にCSPエラー)</li>
+      <li class="success">✓ CSSを追加した場合、ページ上部に青いボーダーが表示される</li>
+      <li class="success">✓ CSSを追加した場合、h1タイトルが赤色に変わる</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h2>トラブルシューティング</h2>
+    <p><strong>カスタマイズが適用されない場合:</strong></p>
+    <ul>
+      <li>拡張機能が有効になっているか確認</li>
+      <li>ドメイン設定が正しいか確認 (localhost または 127.0.0.1)</li>
+      <li>カスタマイズが「有効」になっているか確認</li>
+      <li>ページをリロード (Ctrl+F5 または Cmd+Shift+R)</li>
+      <li>ブラウザコンソール (F12) でエラーを確認</li>
+    </ul>
+  </div>
+</body>
+</html>
