@@ -21,7 +21,7 @@ Redmineのプラグイン [redmine-view-customize](https://github.com/onozaty/re
 
 1. このリポジトリをクローンまたはダウンロード
    ```
-   git clone https://github.com/yourusername/ChromeRedmineCustomize.git
+   git clone https://github.com/deve-liba/RedmineInjector.git
    ```
 
 2. アイコンファイルを準備（オプション）
@@ -284,13 +284,13 @@ document.addEventListener('DOMContentLoaded', function () {
 ### エクスポート
 
 1. 設定画面で「エクスポート」ボタンをクリック
-2. 表示されるJSON形式のデータをコピー
-3. ファイルとして保存するか、他のユーザーと共有
+2. JSON形式のファイルが自動的にダウンロードされます
+3. ダウンロードされたファイルを保存するか、他のユーザーと共有
 
 ### インポート
 
 1. 設定画面で「インポート」ボタンをクリック
-2. JSON形式のデータを貼り付け
+2. JSON形式のファイルを選択
 3. 「インポート」ボタンをクリック
 4. 既存設定の上書きまたは追加を選択
 
@@ -312,13 +312,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 #### サンプルの使い方
 
-1. `sample/settings.json` ファイルをテキストエディタで開く
-2. 内容をすべてコピー
-3. 拡張機能の設定画面で「インポート」ボタンをクリック
-4. コピーした内容を貼り付け
-5. 「インポート」をクリック
-6. `domain` フィールドを自分のRedmineのドメインに変更
-7. 保存して、Redmineの課題ページで動作を確認
+1. 拡張機能の設定画面で「インポート」ボタンをクリック
+2. `sample/settings.json` ファイルを選択
+3. 「インポート」をクリック
+4. インポートされたカスタマイズを編集して、`domain` フィールドに自分のRedmineのドメインを設定（デフォルトは空欄で全ドメインが対象）
+5. 保存して、Redmineの課題ページで動作を確認
 
 ## 注意事項
 
